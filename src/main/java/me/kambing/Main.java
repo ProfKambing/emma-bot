@@ -1,5 +1,6 @@
 package me.kambing;
 
+import me.kambing.events.DefaultRole;
 import me.kambing.events.FilterEvent;
 import me.kambing.events.CommandManager;
 import me.kambing.events.FilterToggler;
@@ -33,6 +34,7 @@ public class Main {
 
             jda.addEventListener(new FilterEvent());
             jda.addEventListener(new FilterToggler());
+            jda.addEventListener(new DefaultRole());
 
 
         } catch (Exception e) {
