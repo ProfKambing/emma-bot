@@ -17,7 +17,7 @@ public class MuteCommand {
                 if (!mute.getRoles().contains(getMutedRole(event.getGuild()))) {
                     event.getMessage().addReaction("\u2705").queue();
                 }else {
-                    event.getMessage().addReaction("\uF6AB").queue();
+                    event.getMessage().addReaction("\uD83D\uDEAB").queue();
                 }
             }
         } catch (Exception e) {
