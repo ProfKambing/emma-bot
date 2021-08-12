@@ -94,6 +94,12 @@ public class CommandManager extends ListenerAdapter {
             } else if (commandName.startsWith("trampoline") || commandName.startsWith("tram")) {
                 TrampolineCommand.onMessageReceived(event);
 
+            } else if (commandName.startsWith("mute")) {
+                MuteCommand.onMessageReceived(event);
+
+            } else if (commandName.startsWith("unmute")) {
+                UnmuteCommand.onMessageReceived(event);
+
 
             }
         }
