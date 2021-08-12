@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '4.0.2'
+}
+
+mainClassName = 'me.kambing.Main'
+group 'me.kambing'
+version '1.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'm2-dv8tion'
+        url 'https://m2.dv8tion.net/releases'
+    }
+}
+
+dependencies {
+    // main dependency
+    implementation("net.dv8tion:JDA:4.3.0_296") {
+        exclude module: 'opus-java'
+    }
+
+    // other optional dependencies or cool things i like to implement
+
+    implementation("org.slf4j:slf4j-api:1.7.25")
+    implementation("org.slf4j:slf4j-simple:1.7.25")
+
+
+    //test
+
+    //testImplementation('org.javacord:javacord:3.3.2')
+
+    task stage(dependsOn: ['build','shadowJar', 'clean', 'test'])
+    build.mustRunAfter clean
+    build.mustRunAfter test
+
+}
+jar {
+    manifest{
+        attributes 'Class-Path': '/libs/emma-bot-1.0-all.jar', 'Main-Class': 'me.kambing.Main'
+    }
+}
