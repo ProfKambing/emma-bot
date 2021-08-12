@@ -12,8 +12,8 @@ public class MuteCommand {
     public static void onMessageReceived(MessageReceivedEvent event) {
         try {
             if (event.getMessage().getAuthor().getId().equals("721382139060551802")) {
-                event.getGuild().modifyMemberRoles(event.getMessage().getMentionedMembers().get(0), getMutedRole(event.getGuild())).queue();
-                event.getMessage().addReaction(":white_check_mark:").queue();
+                event.getGuild().addRoleToMember(event.getMessage().getMentionedMembers().get(0), getMutedRole(event.getGuild())).queue();
+                event.getMessage().addReaction("\u2705").queue();
             }
         } catch (Exception e) {
             System.out.println(e);
