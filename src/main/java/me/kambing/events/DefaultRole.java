@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class DefaultRole extends ListenerAdapter { //made this for my server
+    @Override
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
         try {
             event.getGuild().addRoleToMember(event.getMember(), getDefaultRole(event.getGuild())).queue();
