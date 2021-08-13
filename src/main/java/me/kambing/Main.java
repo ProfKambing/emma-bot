@@ -29,7 +29,7 @@ public class Main
     public static final String name = "emmaa";
     public static void main(String[] args) throws IOException, LoginException, IllegalArgumentException, RateLimitedException
     {
-        String token = "ODc1NTYyNjY3MTk5MzMyMzgz.YRXVRw.l8ix9RDu-zU9MNiuvMKKa9n2YdI";
+        String token = "ODc0MTQ4NTQ0ODY3NjE4ODQ4.YRCwRQ.17Oo3BdIaaRLPoF9ID9nfKb1EFs";
         String ownerId = "721382139060551802";
 
 
