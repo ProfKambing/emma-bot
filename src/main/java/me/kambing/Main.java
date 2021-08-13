@@ -1,5 +1,4 @@
 package me.kambing;
-import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
 import com.jagrosh.jdautilities.examples.command.*;
@@ -9,7 +8,7 @@ import javax.security.auth.login.LoginException;
 import me.kambing.commands.*;
 import me.kambing.commands.owner.NickCommand;
 import me.kambing.commands.owner.TrampolineCommand;
-import me.kambing.events.CommandManager;
+import me.kambing.events.Troll;
 import me.kambing.events.FilterEvent;
 import me.kambing.events.FilterToggler;
 import net.dv8tion.jda.api.JDA;
@@ -54,6 +53,7 @@ public class Main
                 new ShipCommand(),
                 new ServerPFPCommand(),
                 new AvatarCommand(),
+                new HackCommand(),
                 new SayCommand(waiter));
 
 
@@ -65,7 +65,7 @@ public class Main
                 .build();
 
 
-               jda.addEventListener(new CommandManager());
+               jda.addEventListener(new Troll());
                jda.addEventListener(new FilterEvent());
                jda.addEventListener(new FilterToggler());
 
