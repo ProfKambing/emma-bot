@@ -13,10 +13,8 @@ import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.ChannelType;
 
 //pasted shit
-public class CatCommand extends Command
-{
-    public CatCommand()
-    {
+public class CatCommand extends Command {
+    public CatCommand() {
         this.name = "cat";
         this.help = "shows a random cat";
         this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS};
@@ -24,15 +22,13 @@ public class CatCommand extends Command
     }
 
     @Override
-    protected void execute(CommandEvent event)
-    {
+    protected void execute(CommandEvent event) {
         // use Unirest to poll an API
         Unirest.get("https://aws.random.cat/meow").asJsonAsync(new Callback<JsonNode>(){
 
             // The API call was successful
             @Override
-            public void completed(HttpResponse<JsonNode> hr)
-            {
+            public void completed(HttpResponse<JsonNode> hr) {
                 event.reply(new EmbedBuilder()
                         .setColor(event.isFromType(ChannelType.TEXT) ? event.getSelfMember().getColor() : Color.GREEN)
                         .setImage(hr.getBody().getObject().getString("file"))

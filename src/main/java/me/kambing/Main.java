@@ -57,7 +57,9 @@ public class Main
                 new AvatarCommand(),
                 new HackCommand(),
                 new CatgirlCommand(),
+                new LewdNekoCommand(),
                 new SayCommand(waiter));
+
 
 
 
