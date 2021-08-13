@@ -24,7 +24,7 @@ public class LewdNekoCommand extends Command {
 
     @Override
     protected void execute(CommandEvent event) {
-        if (event.getTextChannel().isNSFW()) {
+        if (event.isFromType(ChannelType.PRIVATE) || event.getTextChannel().isNSFW()) {
             // use Unirest to poll an API
             Unirest.get("https://nekos.life/api/lewd/neko").asJsonAsync(new Callback<JsonNode>() {
 
