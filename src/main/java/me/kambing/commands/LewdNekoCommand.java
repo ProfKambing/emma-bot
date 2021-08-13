@@ -19,6 +19,7 @@ public class LewdNekoCommand extends Command {
         this.help = "shows a random NSFW catgirl";
         this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS};
         this.guildOnly = false;
+        this.aliases = new String[]{"lcg"};
     }
 
     @Override
