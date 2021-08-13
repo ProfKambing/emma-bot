@@ -38,7 +38,6 @@ public class Main
         client.setOwnerId(ownerId);
         client.setActivity(Activity.playing("playing with kambing"));
         client.setStatus(OnlineStatus.DO_NOT_DISTURB);
-        client.setHelpWord("emma help");
         client.setEmojis("\u2705", "\u26A0", "\uD83D\uDEAB");
         client.setPrefix(";");
         client.addCommands( //register all da commands

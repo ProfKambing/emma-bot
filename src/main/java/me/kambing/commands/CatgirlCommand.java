@@ -12,7 +12,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.ChannelType;
 
-//pasted shit
+
 public class CatgirlCommand extends Command
 {
     public CatgirlCommand()
