@@ -1,20 +1,28 @@
-package me.kambing.commands.owner;
+package me.kambing.commands;
 
 
+import com.jagrosh.jdautilities.command.Command;
+import com.jagrosh.jdautilities.command.CommandEvent;
+import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Role;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.internal.utils.PermissionUtil;
 
-import static me.kambing.commands.owner.MuteCommand.getMutedRole;
+import static me.kambing.commands.MuteCommand.getMutedRole;
 
 
-public class UnmuteCommand {
+public class UnmuteCommand extends Command {
+    public UnmuteCommand() {
+        this.name = "unmute";
+        this.help = "unmute people";
+        this.cooldown = 5;
+    }
 
-    public static void onMessageReceived(MessageReceivedEvent event) {
+    @Override
+    protected void execute(CommandEvent event) {
         try {
             var mute= event.getMessage().getMentionedMembers().get(0);
-
-            if (event.getMessage().getAuthor().getId().equals("721382139060551802")) {
+            if(PermissionUtil.checkPermission(event.getMember(), Permission.MESSAGE_MANAGE, Permission.ADMINISTRATOR)) {
                 event.getGuild().removeRoleFromMember(mute, getMutedRole(event.getGuild())).queue();
                 if (mute.getRoles().contains(getMutedRole(event.getGuild()))) {
                     event.getMessage().addReaction("\u2705").queue();
@@ -27,4 +35,3 @@ public class UnmuteCommand {
         }
     }
 }
-

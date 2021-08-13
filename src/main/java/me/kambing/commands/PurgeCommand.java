@@ -1,21 +1,25 @@
 package me.kambing.commands;
 
+
+import com.jagrosh.jdautilities.command.Command;
+import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.Permission;
-import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 import net.dv8tion.jda.internal.utils.PermissionUtil;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
 
-public class PurgeCommand {
+public class PurgeCommand extends Command {
+    public PurgeCommand() {
+        this.name = "purge";
+        this.help = "purge messages";
+        this.cooldown = 5;
+    }
 
-    public static void onMessageReceived(MessageReceivedEvent event) {
-
-        if (event.getMember().getUser().getId().equals("721382139060551802")) {
-            {
-
+    @Override
+    protected void execute(CommandEvent event) {
+            if (PermissionUtil.checkPermission(event.getMember(), Permission.MESSAGE_MANAGE, Permission.ADMINISTRATOR)) {
                 var message = event.getMessage();
                 var channel = event.getChannel();
 
@@ -35,4 +39,3 @@ public class PurgeCommand {
             }
         }
     }
-}

@@ -1,17 +1,22 @@
 package me.kambing.commands;
 
-import me.kambing.Main;
+
+import com.jagrosh.jdautilities.command.Command;
+import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.awt.*;
-import java.time.Duration;
 import java.util.Random;
 
-public class HaramCommand {
 
-    public static void onMessageReceived(MessageReceivedEvent event) {
+public class HaramCommand extends Command {
+    public HaramCommand() {
+        this.name = "haram";
+        this.help = "haram meter";
+    }
 
+    @Override
+    protected void execute(CommandEvent event) {
         var message = event.getMessage();
 
         Random random = new Random();
@@ -44,3 +49,4 @@ public class HaramCommand {
 
     }
 }
+

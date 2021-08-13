@@ -1,13 +1,21 @@
 package me.kambing.commands.owner;
 
+
+import com.jagrosh.jdautilities.command.Command;
+import com.jagrosh.jdautilities.command.CommandEvent;
 import me.kambing.Main;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.api.exceptions.RateLimitedException;
 
 
-public class NickCommand {
+public class NickCommand extends Command {
+    public NickCommand() {
+        this.name = "nick";
+        this.help = "nick the bot (only for kambing)";
+        this.cooldown = 5;
+        this.aliases = new String[]{"nickname"};
+    }
 
-    public static void onMessageReceived(MessageReceivedEvent event) {
+    @Override
+    protected void execute(CommandEvent event) {
         try {
             var nick = event.getMessage().getContentRaw().split(Main.prefix +  "nick");
 
@@ -23,4 +31,5 @@ public class NickCommand {
         }
     }
 }
+
 

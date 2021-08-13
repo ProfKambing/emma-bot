@@ -1,17 +1,22 @@
 package me.kambing.commands;
 
-import me.kambing.Main;
+
+import com.jagrosh.jdautilities.command.Command;
+import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.awt.*;
-import java.time.Duration;
 import java.util.Random;
 
-public class ShipCommand {
 
-    public static void onMessageReceived(MessageReceivedEvent event) {
+public class ShipCommand extends Command {
+    public ShipCommand() {
+        this.name = "ship";
+        this.help = "ship people";
+    }
 
+    @Override
+    protected void execute(CommandEvent event) {
         var message = event.getMessage();
 
         Random random = new Random();
@@ -50,3 +55,4 @@ public class ShipCommand {
 
     }
 }
+

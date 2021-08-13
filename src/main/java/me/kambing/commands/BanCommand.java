@@ -1,19 +1,26 @@
 package me.kambing.commands;
 
+import com.jagrosh.jdautilities.command.Command;
+import com.jagrosh.jdautilities.command.CommandEvent;
 import me.kambing.Main;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.exceptions.HierarchyException;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 import net.dv8tion.jda.internal.utils.PermissionUtil;
 
 import java.awt.*;
 
-public class BanCommand {
 
-    public static void onMessageReceived(MessageReceivedEvent event) {
+public class BanCommand extends Command {
+    public BanCommand() {
+        this.name = "ban";
+        this.help = "ban someone";
+        this.cooldown = 1;
+    }
 
+    @Override
+    protected void execute(CommandEvent event) {
         if(PermissionUtil.checkPermission(event.getMember(), Permission.BAN_MEMBERS, Permission.ADMINISTRATOR) || event.getMessage().getAuthor().equals("721382139060551802")) {
 
             EmbedBuilder eb = new EmbedBuilder();
@@ -52,3 +59,4 @@ public class BanCommand {
         }
     }
 }
+

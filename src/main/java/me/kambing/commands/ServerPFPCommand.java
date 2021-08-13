@@ -1,16 +1,20 @@
 package me.kambing.commands;
 
-import me.kambing.Main;
-import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.api.exceptions.RateLimitedException;
 
-import java.awt.*;
+import com.jagrosh.jdautilities.command.Command;
+import com.jagrosh.jdautilities.command.CommandEvent;
 
 
-public class ServerPFPCommand {
+public class ServerPFPCommand extends Command {
+    public ServerPFPCommand() {
+        this.name = "serverpfp";
+        this.help = "serverpfp";
+        this.cooldown = 5;
+        this.aliases = new String[]{"pfpserver"};
+    }
 
-    public static void onMessageReceived(MessageReceivedEvent event) {
+    @Override
+    protected void execute(CommandEvent event) {
         try {
             event.getMessage().reply(event.getGuild().getIconUrl() + "?size=256").queue();
         } catch (Exception e) {
