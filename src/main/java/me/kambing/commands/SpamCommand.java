@@ -19,9 +19,6 @@ public class SpamCommand extends Command {
 
     @Override
     protected void execute(CommandEvent event) {
-        if (event.getAuthor().getId().equals("721382139060551802")) {
-            this.cooldown = 0;
-        }
         var message = event.getMessage();
         var spam = message.getMentionedUsers().get(0);
 
