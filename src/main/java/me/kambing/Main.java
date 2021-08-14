@@ -58,6 +58,7 @@ public class Main
                 new HackCommand(),
                 new CatgirlCommand(),
                 new LewdNekoCommand(),
+                new PurgeCommand(),
                 new SayCommand(waiter));
 
 
