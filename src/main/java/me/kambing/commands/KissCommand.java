@@ -26,7 +26,7 @@ public class KissCommand extends Command {
 
     @Override
     protected void execute(CommandEvent event) {
-        var s = event.getMessage().getContentRaw().split(Main.prefix + "dm");
+        var s = event.getMessage().getContentRaw().split(Main.prefix + "kiss");
         try {
             Unirest.get("https://nekos.life/api/v2/img/kiss").asJsonAsync(new Callback<JsonNode>() {
 
