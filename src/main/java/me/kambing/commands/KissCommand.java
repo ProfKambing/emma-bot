@@ -26,7 +26,7 @@ public class KissCommand extends Command {
 
     @Override
     protected void execute(CommandEvent event) {
-        var s = event.getMessage().getContentRaw().split(Main.prefix + "kiss");
+        String[] items = event.getArgs().split("\\s+");
         try {
             Unirest.get("https://nekos.life/api/v2/img/kiss").asJsonAsync(new Callback<JsonNode>() {
 
@@ -54,7 +54,7 @@ public class KissCommand extends Command {
             });
 
         } catch (IndexOutOfBoundsException exception) {
-            if (s[1].isEmpty()) {
+            if (items[1].isEmpty()) {
                 event.getMessage().reply("Who are you kissing?").queue();
             }else{
                 Unirest.get("https://nekos.life/api/v2/img/hug").asJsonAsync(new Callback<JsonNode>() {
@@ -63,7 +63,7 @@ public class KissCommand extends Command {
                     @Override
                     public void completed(HttpResponse<JsonNode> hr) {
                         event.reply(new EmbedBuilder()
-                                .setTitle(event.getAuthor().getName() + " kisses " + s[1])
+                                .setTitle(event.getAuthor().getName() + " kisses " + items[1])
                                 .setColor(event.isFromType(ChannelType.TEXT) ? event.getSelfMember().getColor() : Color.GREEN)
                                 .setImage(hr.getBody().getObject().getString("url"))
                                 .build());
