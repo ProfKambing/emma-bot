@@ -59,6 +59,8 @@ public class Main
                 new CatgirlCommand(),
                 new LewdNekoCommand(),
                 new PurgeCommand(),
+                new KissCommand(),
+                new HugCommand(),
                 new SayCommand(waiter));
 
 
