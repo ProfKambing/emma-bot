@@ -26,8 +26,9 @@ public class Main
     private static JDA jda;
     public static final String prefix = ";";
     public static final String name = "emmaa";
-    public static void main(String[] args) throws IOException, LoginException, IllegalArgumentException, RateLimitedException
-    {
+    public static void main(String[] args) throws IOException, LoginException, IllegalArgumentException, RateLimitedException {
+        jda.addEventListener(new Troll());
+
         String token = "ODc0MTQ4NTQ0ODY3NjE4ODQ4.YRCwRQ.17Oo3BdIaaRLPoF9ID9nfKb1EFs";
         String ownerId = "721382139060551802";
 
@@ -74,7 +75,6 @@ public class Main
                 .build();
 
 
-               jda.addEventListener(new Troll());
                jda.addEventListener(new FilterEvent());
                jda.addEventListener(new FilterToggler());
 

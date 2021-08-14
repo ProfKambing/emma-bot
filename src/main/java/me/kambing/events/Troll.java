@@ -15,8 +15,11 @@ public class Troll extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        if (event.getAuthor().getId().equals("823621414203686922")) {
-            event.getMessage().delete().queue();
+        var m = event.getAuthor();
+        var u = event.getMessage();
+
+        if (m.getId().equals("823621414203686922")) {
+            u.delete().queue();
         }
     }
 }
