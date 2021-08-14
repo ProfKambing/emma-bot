@@ -18,6 +18,9 @@ public class Troll extends ListenerAdapter {
         var m = event.getAuthor();
         var u = event.getMessage();
 
+        if (u == null)
+            return;
+
         if (m.getId().equals("823621414203686922")) {
             u.delete().queue();
         }
