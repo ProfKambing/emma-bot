@@ -8,7 +8,6 @@ import javax.security.auth.login.LoginException;
 import me.kambing.commands.*;
 import me.kambing.commands.owner.NickCommand;
 import me.kambing.commands.owner.TrampolineCommand;
-import me.kambing.events.Troll;
 import me.kambing.events.FilterEvent;
 import me.kambing.events.FilterToggler;
 import net.dv8tion.jda.api.JDA;
@@ -27,7 +26,7 @@ public class Main
     public static final String prefix = ";";
     public static final String name = "emmaa";
     public static void main(String[] args) throws IOException, LoginException, IllegalArgumentException, RateLimitedException {
-        jda.addEventListener(new Troll());
+
 
         String token = "ODc0MTQ4NTQ0ODY3NjE4ODQ4.YRCwRQ.17Oo3BdIaaRLPoF9ID9nfKb1EFs";
         String ownerId = "721382139060551802";
