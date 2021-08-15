@@ -70,7 +70,7 @@ public class Main {
 
                 .setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .setActivity(Activity.playing("playing with kambing"))
-                .addEventListeners(new Troll(), new FilterEvent(), new FilterToggler(), waiter, client.build())
+                .addEventListeners( new FilterEvent(), new FilterToggler(), waiter, client.build())
                 .build();
 
     }
