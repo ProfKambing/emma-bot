@@ -20,7 +20,6 @@ public class ServerInfoCommand extends Command {
 
     @Override
     protected void execute(CommandEvent event) {
-        try {
 
         EmbedBuilder builder = new EmbedBuilder();
         builder.setAuthor("Server Info", null, "https://cdn.discordapp.com/avatars/721382139060551802/3205930f9af4c952b6b10019fd752e3b.png?size=256");
@@ -29,9 +28,6 @@ public class ServerInfoCommand extends Command {
         builder.setThumbnail(event.getGuild().getIconUrl());
         builder.addField("Name", event.getGuild().getName(), true);
         builder.addBlankField(true);
-        if (event.getGuild().getOwner().getUser().getName() != null) {
-            builder.addField("Owner", event.getGuild().getOwner().getUser().getName(), true);
-        }
         builder.addField("Server ID", event.getGuild().getId(), true);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a");
         builder.addField("Creation Date", event.getGuild().getTimeCreated().format(formatter), true);
@@ -45,8 +41,6 @@ public class ServerInfoCommand extends Command {
         builder.addField("Online Members", String.valueOf(online), true);
 
         event.getTextChannel().sendMessage(builder.build()).queue();
-    }catch (NullPointerException e) {
-            System.out.println(e);
-        }
+
         }
 }
