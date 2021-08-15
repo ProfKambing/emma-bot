@@ -27,7 +27,7 @@ public class ServerInfoCommand extends Command {
         builder.setThumbnail(event.getGuild().getIconUrl());
         builder.addField("Name", event.getGuild().getName(), true);
         builder.addBlankField(true);
-        builder.addField("Owner", event.getGuild().getOwner().getUser().getName() + "#" + event.getGuild().getOwner().getUser().getDiscriminator(), true);
+        builder.addField("Owner", event.getGuild().getOwner().getAsMention(), true);
         builder.addField("Server ID", event.getGuild().getId(), true);
         builder.addField("Region", event.getGuild().getRegion().name(), true);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a");
