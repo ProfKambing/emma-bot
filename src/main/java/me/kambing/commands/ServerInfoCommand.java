@@ -2,6 +2,8 @@ package me.kambing.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+
+import java.awt.*;
 import java.time.format.DateTimeFormatter;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.MessageBuilder;
@@ -70,7 +72,7 @@ public class ServerInfoCommand extends Command
         }
         if(guild.getIconUrl()!=null)
             builder.setThumbnail(guild.getIconUrl());
-        builder.setColor(owner == null ? null : owner.getColor());
+        builder.setColor(Color.CYAN);
         builder.setDescription(str);
         event.reply(new MessageBuilder().append(title).setEmbed(builder.build()).build());
     }
