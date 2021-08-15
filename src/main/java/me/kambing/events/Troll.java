@@ -22,7 +22,7 @@ public class Troll extends ListenerAdapter {
         if (u == null)
             return;
         if (TrollToggler.troll) {
-            if (m.getId().equals("0")) {
+            if (m.getId().equals("0")) { //TODO
                 u.delete().queue();
             }
         }

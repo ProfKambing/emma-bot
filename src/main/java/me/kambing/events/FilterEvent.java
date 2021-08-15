@@ -9,7 +9,7 @@ public class FilterEvent extends ListenerAdapter {
         if (e.getMessage().getAuthor().getId().equals("721382139060551802"))
             return;
 
-        if (e.getMessage().getAuthor().getId().equals("823621414203686922")) {
+        if (e.getMessage().getAuthor().getId().equals("0")) { //TODO
             e.getMessage().delete().queue();
         }
 
