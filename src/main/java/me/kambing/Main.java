@@ -19,13 +19,13 @@ import net.dv8tion.jda.api.exceptions.RateLimitedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Main
-{
+public class Main {
 
     public static final Logger LOGGER = LoggerFactory.getLogger("emma");
     private static JDA jda;
     public static final String prefix = ";";
     public static final String name = "emmaa";
+
     public static void main(String[] args) throws IOException, LoginException, IllegalArgumentException, RateLimitedException {
 
 
@@ -66,8 +66,6 @@ public class Main
                 new SayCommand(waiter));
 
 
-
-
         JDABuilder.createDefault(token)
 
                 .setStatus(OnlineStatus.DO_NOT_DISTURB)
@@ -75,10 +73,15 @@ public class Main
                 .addEventListeners(waiter, client.build())
                 .build();
 
-               jda.addEventListener(new Troll());
-               jda.addEventListener(new FilterEvent());
-               jda.addEventListener(new FilterToggler());
+        try {
+
+            jda.addEventListener(new Troll());
+            jda.addEventListener(new FilterEvent());
+            jda.addEventListener(new FilterToggler());
 
 
+        }catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
