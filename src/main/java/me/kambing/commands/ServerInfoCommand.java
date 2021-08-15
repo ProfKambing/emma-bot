@@ -1,46 +1,77 @@
 package me.kambing.commands;
 
-
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import java.time.format.DateTimeFormatter;
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.MessageBuilder;
 import net.dv8tion.jda.api.OnlineStatus;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 
-import java.awt.*;
-import java.time.format.DateTimeFormatter;
+/**
+ *
+ * @author John Grosh (jagrosh)
+ */
+public class ServerInfoCommand extends Command
+{
+    private final static String LINESTART = "\u25AB"; // ▫
+    private final static String GUILD_EMOJI = "\uD83D\uDDA5"; // 🖥
+    private final static String NO_REGION = "\u2754"; // ❔
 
-
-public class ServerInfoCommand extends Command {
-    public ServerInfoCommand() {
+    public ServerInfoCommand()
+    {
         this.name = "serverinfo";
-        this.help = "get server info";
-        this.cooldown = 10;
+        this.aliases = new String[]{"server","guildinfo"};
+        this.help = "shows server info";
+        this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS};
+        this.guildOnly = true;
     }
 
     @Override
-    protected void execute(CommandEvent event) {
-
+    protected void execute(CommandEvent event)
+    {
+        Guild guild = event.getGuild();
+        Member owner = guild.getOwner();
+        long onlineCount = guild.getMembers().stream().filter(u -> u.getOnlineStatus() != OnlineStatus.OFFLINE).count();
+        long botCount = guild.getMembers().stream().filter(m -> m.getUser().isBot()).count();
         EmbedBuilder builder = new EmbedBuilder();
-        builder.setAuthor("Server Info", null, "https://cdn.discordapp.com/avatars/721382139060551802/3205930f9af4c952b6b10019fd752e3b.png?size=256");
-        builder.setThumbnail(event.getGuild().getIconUrl());
-        builder.setColor(Color.CYAN);
-        builder.setThumbnail(event.getGuild().getIconUrl());
-        builder.addField("Name", event.getGuild().getName(), true);
-        builder.addBlankField(true);
-        builder.addField("Server ID", event.getGuild().getId(), true);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a");
-        builder.addField("Creation Date", event.getGuild().getTimeCreated().format(formatter), true);
-        builder.addField("Total Members", String.valueOf(event.getGuild().getMembers().size()), true);
-        int online = 0;
-        for (Member member : event.getGuild().getMembers()) {
-            if (!member.getOnlineStatus().equals(OnlineStatus.OFFLINE)) {
-                ++online;
-            }
+        String title = (GUILD_EMOJI + " Information about **" + guild.getName() + "**:")
+                .replace("@everyone", "@\u0435veryone") // cyrillic e
+                .replace("@here", "@h\u0435re") // cyrillic e
+                .replace("discord.gg/", "dis\u0441ord.gg/"); // cyrillic c;
+        String verif;
+        switch(guild.getVerificationLevel())
+        {
+            case VERY_HIGH:
+                verif = "┻━┻ミヽ(ಠ益ಠ)ノ彡┻━┻";
+                break;
+            case HIGH:
+                verif = "(╯°□°）╯︵ ┻━┻";
+                break;
+            default:
+                verif = guild.getVerificationLevel().name();
+                break;
         }
-        builder.addField("Online Members", String.valueOf(online), true);
-
-        event.getTextChannel().sendMessage(builder.build()).queue();
-
+        String str = LINESTART + "ID: **" + guild.getId() + "**\n"
+                + LINESTART + "Owner: " + (owner == null ? "Unknown" : "**" + owner.getUser().getName() + "**#" + owner.getUser().getDiscriminator()) + "\n"
+                + LINESTART + "Location: " + (guild.getRegion().getEmoji().isEmpty() ? NO_REGION : guild.getRegion().getEmoji()) + " **" + guild.getRegion().getName() + "**\n"
+                + LINESTART + "Creation: **" + guild.getTimeCreated().format(DateTimeFormatter.RFC_1123_DATE_TIME) + "**\n"
+                + LINESTART + "Users: **" + guild.getMemberCache().size() + "** (" + onlineCount + " online, " + botCount + " bots)\n"
+                + LINESTART + "Channels: **" + guild.getTextChannelCache().size() + "** Text, **" + guild.getVoiceChannelCache().size() + "** Voice, **" + guild.getCategoryCache().size() + "** Categories\n"
+                + LINESTART + "Verification: **" + verif + "**";
+        if(!guild.getFeatures().isEmpty())
+            str += "\n" + LINESTART + "Features: **" + String.join("**, **", guild.getFeatures()) + "**";
+        if(guild.getSplashId() != null)
+        {
+            builder.setImage(guild.getSplashUrl() + "?size=1024");
+            str += "\n" + LINESTART + "Splash: ";
         }
+        if(guild.getIconUrl()!=null)
+            builder.setThumbnail(guild.getIconUrl());
+        builder.setColor(owner == null ? null : owner.getColor());
+        builder.setDescription(str);
+        event.reply(new MessageBuilder().append(title).setEmbed(builder.build()).build());
+    }
 }
