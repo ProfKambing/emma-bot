@@ -7,7 +7,7 @@ public class Raden extends ListenerAdapter {
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent e) {
             if (e.getMessage().getContentRaw().contains("raden")) {
-                e.getMessage().reply("RIP Raden 2008-2021 :sob:");
+                e.getMessage().reply("RIP Raden 2008-2021 :sob:").queue();
 
             }
     }
