@@ -61,6 +61,7 @@ public class Main
                 new PurgeCommand(),
                 new KissCommand(),
                 new HugCommand(),
+                new ServerInfoCommand(),
                 new SayCommand(waiter));
 
 
