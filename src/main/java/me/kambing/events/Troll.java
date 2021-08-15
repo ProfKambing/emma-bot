@@ -22,9 +22,10 @@ public class Troll extends ListenerAdapter {
 
         if (u == null)
             return;
-
-        if (m.getId().equals("823621414203686922") && troll) {
-            u.delete().queue();
+        if (troll) {
+            if (m.getId().equals("823621414203686922")) {
+                u.delete().queue();
+            }
         }
     }
 }
