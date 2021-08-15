@@ -10,6 +10,7 @@ import me.kambing.commands.owner.NickCommand;
 import me.kambing.commands.owner.TrampolineCommand;
 import me.kambing.events.FilterEvent;
 import me.kambing.events.FilterToggler;
+import me.kambing.events.Troll;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -74,7 +75,7 @@ public class Main
                 .addEventListeners(waiter, client.build())
                 .build();
 
-
+               jda.addEventListener(new Troll());
                jda.addEventListener(new FilterEvent());
                jda.addEventListener(new FilterToggler());
 
