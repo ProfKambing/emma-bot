@@ -6,7 +6,6 @@ import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
-import static me.kambing.events.TrollToggler.troll;
 
 public class Troll extends ListenerAdapter {
 
@@ -22,7 +21,7 @@ public class Troll extends ListenerAdapter {
 
         if (u == null)
             return;
-        if (troll) {
+        if (TrollToggler.troll) {
             if (m.getId().equals("823621414203686922")) {
                 u.delete().queue();
             }
