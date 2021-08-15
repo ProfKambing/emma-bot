@@ -21,7 +21,7 @@ public class Troll extends ListenerAdapter {
         if (u == null)
             return;
 
-        if (m.getId().equals("823621414203686922")) {
+        if (m.getId().equals("")) {
             u.delete().queue();
         }
     }
