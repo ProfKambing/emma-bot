@@ -70,18 +70,8 @@ public class Main {
 
                 .setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .setActivity(Activity.playing("playing with kambing"))
-                .addEventListeners(waiter, client.build())
+                .addEventListeners(new Troll(), new FilterEvent(), new FilterToggler(), waiter, client.build())
                 .build();
 
-        try {
-
-            jda.addEventListener(new Troll());
-            jda.addEventListener(new FilterEvent());
-            jda.addEventListener(new FilterToggler());
-
-
-        }catch (Exception e) {
-            System.out.println(e);
-        }
     }
 }
