@@ -26,6 +26,8 @@ public class EmbedCommand extends Command {
 
         }catch (IndexOutOfBoundsException e) {
             event.getMessage().replyEmbeds(new EmbedBuilder().setTitle("Incorrect Format!").setDescription("Format:\n;embed ,<title>,<description>,<hexcolor>\nyou doesnt need to space between the ,").setColor(Color.CYAN).build()).queue();
+        }catch (NumberFormatException e) {
+            event.getMessage().reply("Uknown hex color, I only know java hex color...").queue();
         }
     }
 }
