@@ -22,10 +22,10 @@ public class EmbedCommand extends Command {
         try {
             var message = event.getMessage().getContentRaw().split(",");
 
-            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle(message[0]).setDescription(message[1]).setColor(message[2] == null ? event.getSelfMember().getColor() : new Color(Integer.parseInt(message[2]))).build()).queue();
+            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle(message[1]).setDescription(message[2]).setColor(message[3] == null ? event.getSelfMember().getColor() : new Color(Integer.parseInt(message[2]))).build()).queue();
 
         }catch (IndexOutOfBoundsException e) {
-            event.getMessage().replyEmbeds(new EmbedBuilder().setTitle("Incorrect Format!").setDescription("Format:\n;embed <title>,<description>,<hexcolor(optional)>\nyou doesnt need to space between the ,").setColor(Color.CYAN).build()).queue();
+            event.getMessage().replyEmbeds(new EmbedBuilder().setTitle("Incorrect Format!").setDescription("Format:\n;embed ,<title>,<description>,<hexcolor>\nyou doesnt need to space between the ,").setColor(Color.CYAN).build()).queue();
         }
     }
 }
