@@ -22,6 +22,8 @@ public class EmbedCommand extends Command {
         try {
             var message = event.getMessage().getContentRaw().split(",");
 
+
+            event.getMessage().delete().queue();
             event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle(message[1]).setDescription(message[2]).setColor(message[3] == null ? event.getSelfMember().getColor() : new Color(Integer.parseInt(message[3]))).build()).queue();
 
         }catch (IndexOutOfBoundsException e) {
