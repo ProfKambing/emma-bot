@@ -24,12 +24,10 @@ public class EmbedCommand extends Command {
 
 
             event.getMessage().delete().queue();
-            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle(message[1]).setDescription(message[2]).setColor(message[3] == null ? event.getSelfMember().getColor() : new Color(Integer.parseInt(message[3]))).build()).queue();
+            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle(message[1]).setDescription(message[2]).setColor(message[3] == null ? event.getSelfMember().getColor() : Color.decode(message[3])).build()).queue();
 
         }catch (IndexOutOfBoundsException e) {
             event.getMessage().replyEmbeds(new EmbedBuilder().setTitle("Incorrect Format!").setDescription("Format:\n;embed ,<title>,<description>,<hexcolor>\nyou doesnt need to space between the ,").setColor(Color.CYAN).build()).queue();
-        }catch (NumberFormatException e) {
-            event.getMessage().reply("Uknown hex color, I only know java hex color...").queue();
         }
     }
 }
