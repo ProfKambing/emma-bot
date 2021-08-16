@@ -35,7 +35,6 @@ public class ServerInfoCommand extends Command
     @Override
     protected void execute(CommandEvent event)
     {
-        List<Member> members = event.getGuild().loadMembers().get();
         Guild guild = event.getGuild();
         Member owner = guild.getOwner();
         long onlineCount = guild.getMembers().stream().filter(u -> u.getOnlineStatus() != OnlineStatus.OFFLINE).count();
@@ -62,7 +61,7 @@ public class ServerInfoCommand extends Command
                 + LINESTART + "Owner: " + (owner == null ? "Unknown" : "**" + owner.getUser().getName() + "**#" + owner.getUser().getDiscriminator()) + "\n"
                 + LINESTART + "Location: " + (guild.getRegion().getEmoji().isEmpty() ? NO_REGION : guild.getRegion().getEmoji()) + " **" + guild.getRegion().getName() + "**\n"
                 + LINESTART + "Creation: **" + guild.getTimeCreated().format(DateTimeFormatter.RFC_1123_DATE_TIME) + "**\n"
-                + LINESTART + "Members: ** " + members + "\n"
+                + LINESTART + "Users: **" + guild.getMembers() + "** (" + onlineCount + " online, " + botCount + " bots)\n"
                 + LINESTART + "Channels: **" + guild.getTextChannelCache().size() + "** Text, **" + guild.getVoiceChannelCache().size() + "** Voice, **" + guild.getCategoryCache().size() + "** Categories\n"
                 + LINESTART + "Verification: **" + verif + "**";
         if(!guild.getFeatures().isEmpty())
