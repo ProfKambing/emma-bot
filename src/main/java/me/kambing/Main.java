@@ -22,7 +22,7 @@ public class Main {
     public static final Logger LOGGER = LoggerFactory.getLogger("emma");
     private static JDA jda;
     public static final String prefix = ";";
-    public static final String name = "emmaa";
+    public static final String name = "emma";
 
     public static void main(String[] args) throws IOException, LoginException, IllegalArgumentException, RateLimitedException {
 
