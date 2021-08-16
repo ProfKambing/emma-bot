@@ -18,6 +18,7 @@ public class NukeCommand extends Command {
     @Override
     protected void execute(CommandEvent event) {
          //TODO
+        event.getGuild().retrieveBanList().queue();
         }
     }
 

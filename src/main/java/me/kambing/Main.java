@@ -62,6 +62,7 @@ public class Main {
                 new KissCommand(),
                 new HugCommand(),
                 new ServerInfoCommand(),
+                new EmbedCommand(),
                 new SayCommand(waiter));
 
 
