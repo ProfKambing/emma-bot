@@ -25,7 +25,7 @@ public class EmbedCommand extends Command {
             event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle(message[0]).setDescription(message[1]).setColor(message[2] == null ? event.getSelfMember().getColor() : new Color(Integer.parseInt(message[2]))).build()).queue();
 
         }catch (IndexOutOfBoundsException e) {
-            event.reply(new EmbedBuilder().setTitle("Incorrect Format!").setDescription("Format:\n;embed <title>,<description>,<hexcolor(optional)>\nyou doesnt need to space between the \u0022,\u0022").setColor(Color.CYAN).build());
+            event.getMessage().replyEmbeds(new EmbedBuilder().setTitle("Incorrect Format!").setDescription("Format:\n;embed <title>,<description>,<hexcolor(optional)>\nyou doesnt need to space between the ,").setColor(Color.CYAN).build()).queue();
         }
     }
 }
