@@ -64,7 +64,6 @@ public class Main {
                 new ServerInfoCommand(),
                 new EmbedCommand(),
                 new SayCommand(waiter));
-        jda.upsertCommand("say", "make me say something").queue();
 
 
         JDABuilder.createDefault(token)
@@ -72,7 +71,15 @@ public class Main {
                 .setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .setActivity(Activity.playing("playing with kambing"))
                 .addEventListeners(new SlashCommand(), new Raden(), new Troll(), new TrollToggler(), new FilterEvent(), new FilterToggler(), waiter, client.build())
-                .build();
 
+                .build();
+        try {
+
+
+            jda.awaitReady().upsertCommand("say", "make me say something").queue();
+
+        }catch (InterruptedException e) {
+            //empty catch block go brrrrrr LOL
+        }
     }
 }
