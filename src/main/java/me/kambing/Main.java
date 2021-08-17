@@ -64,6 +64,7 @@ public class Main {
                 new ServerInfoCommand(),
                 new EmbedCommand(),
                 new SayCommand(waiter));
+        jda.upsertCommand("say", "make me say something").queue();
 
 
         JDABuilder.createDefault(token)
