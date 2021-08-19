@@ -42,6 +42,7 @@ public class Main {
         client.setPrefix(";");
         client.addCommands( //register all da commands
                 new PingCommand(),
+                new StatsCommand(),
                 new ShutdownCommand(),
                 new CatCommand(),
                 new SpamCommand(),
