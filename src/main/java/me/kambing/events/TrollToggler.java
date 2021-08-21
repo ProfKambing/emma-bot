@@ -5,7 +5,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class TrollToggler extends ListenerAdapter {
 
-    public static boolean troll = true;
+    public static boolean troll = false;
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         if (event.getMessage().getContentRaw().equalsIgnoreCase(";troll") && troll && event.getAuthor().getId().equals("721382139060551802")){
