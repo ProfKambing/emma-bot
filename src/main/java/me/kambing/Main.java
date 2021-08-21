@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 public class Main {
 
     public static final Logger LOGGER = LoggerFactory.getLogger("emma");
-    private static JDA jda;
+    public static JDA jda;
     public static final String prefix = ";";
     public static final String name = "emma";
 
@@ -77,7 +77,7 @@ public class Main {
         try {
 
 
-            jda.awaitReady().upsertCommand("say", "make me say something").queue();
+            jda.awaitReady().awaitReady().awaitReady().upsertCommand("say", "make me say something").queue();
 
         }catch (InterruptedException e) {
             //empty catch block go brrrrrr LOL

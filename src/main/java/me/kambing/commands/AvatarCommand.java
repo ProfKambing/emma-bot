@@ -3,6 +3,7 @@ package me.kambing.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import me.kambing.Main;
 
 
 public class AvatarCommand extends Command {
@@ -17,11 +18,18 @@ public class AvatarCommand extends Command {
     protected void execute(CommandEvent event) {
         try {
             var ping = event.getMessage().getMentionedMembers().get(0).getUser();
-            event.getMessage().reply(ping.getAvatarUrl()+ "?size=256").queue();
-        }catch (IndexOutOfBoundsException exception) {
-            event.getMessage().reply(event.getMessage().getAuthor().getAvatarUrl()+ "?size=256").queue();
-        } catch (Exception e) {
-            event.getMessage().reply("masalah sial discord ni").queue();
+            event.getMessage().reply(ping.getAvatarUrl() + "?size=256").queue();
+        } catch (IndexOutOfBoundsException exception) {
+            try {
+                var id = event.getMessage().getContentRaw().split(Main.prefix + "pfp");
+                if (id[1].length() == 18) {
+                    event.getMessage().reply(event.getGuild().getMemberById(id[1]).getUser().getAvatarUrl()).queue();
+                } else {
+                    event.getMessage().reply(event.getMessage().getAuthor().getAvatarUrl() + "?size=256").queue();
+                }
+            }catch (NullPointerException e) {
+                event.getMessage().reply("member by not found!").queue();
+            }
         }
     }
 }
