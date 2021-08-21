@@ -21,7 +21,7 @@ public class AvatarCommand extends Command {
             event.getMessage().reply(ping.getAvatarUrl() + "?size=256").queue();
         } catch (IndexOutOfBoundsException exception) {
             try {
-                var id = event.getMessage().getContentRaw().split(Main.prefix + "pfp");
+                var id = event.getMessage().getContentRaw().split(Main.prefix + "pfp ");
                 if (id[1].length() == 18) {
                     event.getMessage().reply(event.getGuild().getMemberById(id[1]).getUser().getAvatarUrl()).queue();
                 } else {
