@@ -31,8 +31,8 @@ public class PurgeCommand extends Command {
 
                     channel.purgeMessages(channel.getHistory().retrievePast(Integer.parseInt(purgeAmount)).complete());
 
-                    channel.sendMessage("Purged " + s[1] + "messages").queue(message1 -> {
-                        message1.delete().delay(Duration.ofSeconds(1)).queue(); // idk this looks cool ahahahjsgjsg
+                    channel.sendMessage("Purged " + s[1] + " messages").queue(message1 -> {
+                        message1.delete().queue(); // idk this looks cool ahahahjsgjsg
                     });
 
 
