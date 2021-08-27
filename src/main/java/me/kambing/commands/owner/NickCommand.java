@@ -17,7 +17,7 @@ public class NickCommand extends Command {
     @Override
     protected void execute(CommandEvent event) {
         try {
-            var nick = event.getMessage().getContentRaw().split(Main.prefix +  "nick");
+            String[] nick = event.getMessage().getContentRaw().split(Main.prefix +  "nick");
 
             if (event.getMessage().getAuthor().getId().equals("721382139060551802")) {
                 event.getMessage().reply("ok daddy changing nickname to" + nick[1]).queue();
