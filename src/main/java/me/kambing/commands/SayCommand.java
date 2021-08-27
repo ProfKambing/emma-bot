@@ -5,6 +5,7 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
 
 import me.kambing.Main;
+import net.dv8tion.jda.api.entities.Message;
 
 
 public class SayCommand extends Command
@@ -19,7 +20,7 @@ public class SayCommand extends Command
 
     @Override
     protected void execute(CommandEvent event) {
-        var message = event.getMessage().getContentRaw().split(Main.prefix +  "say");
+        String[] message = event.getMessage().getContentRaw().split(Main.prefix +  "say");
         event.getChannel().sendMessage(message[1]).queue();
     }
 

@@ -4,8 +4,7 @@ package me.kambing.commands;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.Permission;
-import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.Role;
+import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 import net.dv8tion.jda.internal.utils.PermissionUtil;
 
@@ -22,12 +21,12 @@ public class PurgeCommand extends Command {
     @Override
     protected void execute(CommandEvent event) {
             if (PermissionUtil.checkPermission(event.getMember(), Permission.MESSAGE_MANAGE, Permission.ADMINISTRATOR)) {
-                var message = event.getMessage();
-                var channel = event.getChannel();
+                Message message = event.getMessage();
+                MessageChannel channel = event.getChannel();
 
                 try {
-                    var s = message.getContentRaw().split(" ");
-                    var purgeAmount = s[1];
+                    String[] s = message.getContentRaw().split(" ");
+                    String purgeAmount = s[1];
 
                     channel.purgeMessages(channel.getHistory().retrievePast(Integer.parseInt(purgeAmount)).complete());
 

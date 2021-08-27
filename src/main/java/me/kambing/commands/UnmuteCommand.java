@@ -4,6 +4,8 @@ package me.kambing.commands;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.internal.utils.PermissionUtil;
 
 import static me.kambing.commands.MuteCommand.getMutedRole;
@@ -19,7 +21,7 @@ public class UnmuteCommand extends Command {
     @Override
     protected void execute(CommandEvent event) {
         try {
-            var mute= event.getMessage().getMentionedMembers().get(0);
+            Member mute= event.getMessage().getMentionedMembers().get(0);
             if(PermissionUtil.checkPermission(event.getMember(), Permission.MESSAGE_MANAGE, Permission.ADMINISTRATOR)) {
                 event.getGuild().removeRoleFromMember(mute, getMutedRole(event.getGuild())).queue();
                 if (mute.getRoles().contains(getMutedRole(event.getGuild()))) {

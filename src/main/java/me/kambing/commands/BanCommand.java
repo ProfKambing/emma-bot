@@ -5,6 +5,9 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import me.kambing.Main;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.exceptions.HierarchyException;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 import net.dv8tion.jda.internal.utils.PermissionUtil;
@@ -26,10 +29,10 @@ public class BanCommand extends Command {
             EmbedBuilder eb = new EmbedBuilder();
             eb.setColor(Color.CYAN);
 
-            var message = event.getMessage();
+            Message message = event.getMessage();
             try {
-                var s = message.getContentRaw().split(" ");
-                var memberToBan = message.getMentionedMembers().get(0).getUser();
+                String[] s = message.getContentRaw().split(" ");
+                User memberToBan = message.getMentionedMembers().get(0).getUser();
 
                 event.getGuild().ban(memberToBan, 0,s[2]).complete();
                 eb.setDescription(memberToBan.getAsTag() + " has been banned for " + s[2]);

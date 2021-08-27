@@ -1,7 +1,10 @@
 package me.kambing.events;
 
 
+import com.jagrosh.jdautilities.examples.doc.Author;
 import me.kambing.Main;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -16,8 +19,8 @@ public class Troll extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        var m = event.getAuthor();
-        var u = event.getMessage();
+        User m = event.getAuthor();
+        Message u = event.getMessage();
 
         if (u == null)
             return;

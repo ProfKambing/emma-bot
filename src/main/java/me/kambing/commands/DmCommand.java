@@ -5,6 +5,8 @@ import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import me.kambing.Main;
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.exceptions.ErrorHandler;
 import net.dv8tion.jda.api.requests.ErrorResponse;
 
@@ -23,11 +25,11 @@ public class DmCommand extends Command {
         EmbedBuilder eb = new EmbedBuilder();
         eb.setColor(Color.CYAN);
 
-        var message = event.getMessage();
+        Message message = event.getMessage();
         try {
 
-            var memberToDm = message.getMentionedUsers().get(0);
-            var s = message.getContentRaw().split(Main.prefix + "dm");
+            User memberToDm = message.getMentionedUsers().get(0);
+            String[] s = message.getContentRaw().split(Main.prefix + "dm");
             eb.setAuthor(message.getAuthor().getName(), message.getAuthor().getAvatarUrl(), message.getAuthor().getAvatarUrl());
             eb.setTitle("You received a dm from " + message.getAuthor().getAsTag() + "!");
             eb.setDescription(s[1]);

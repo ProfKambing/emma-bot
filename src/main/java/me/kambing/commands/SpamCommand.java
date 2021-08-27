@@ -6,6 +6,9 @@ import java.awt.Color;
 import java.time.Duration;
 
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.exceptions.ErrorHandler;
 import net.dv8tion.jda.api.requests.ErrorResponse;
 
@@ -19,8 +22,8 @@ public class SpamCommand extends Command {
 
     @Override
     protected void execute(CommandEvent event) {
-        var message = event.getMessage();
-        var spam = message.getMentionedUsers().get(0);
+        Message message = event.getMessage();
+        User spam = message.getMentionedUsers().get(0);
 
         int i = 1;
 
@@ -29,7 +32,7 @@ public class SpamCommand extends Command {
             eb.setColor(Color.RED);
             eb.setDescription("kambing sex me so i wont spam");
             message.replyEmbeds(eb.build()).queue();
-            var name = message.getMember();
+            Member name = message.getMember();
         } else if (spam.getId().equals("823913639203438643")) {
             EmbedBuilder eb = new EmbedBuilder();
             eb.setColor(Color.pink);
