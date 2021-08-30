@@ -71,16 +71,8 @@ public class Main {
                 .enableIntents(GatewayIntent.GUILD_MEMBERS)
                 .setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .setActivity(Activity.playing("playing with kambing"))
-                .addEventListeners(new SlashCommand(), new Raden(), new Troll(), new TrollToggler(), new FilterEvent(), new FilterToggler(), waiter, client.build())
+                .addEventListeners( new Lock(), new Lock.Locked(), new Raden(), new Troll(), new TrollToggler(), new FilterEvent(), new FilterToggler(), waiter, client.build())
 
                 .build();
-        try {
-
-
-            jda.awaitReady().awaitReady().awaitReady().upsertCommand("say", "make me say something").queue();
-
-        }catch (InterruptedException e) {
-            //empty catch block go brrrrrr LOL
         }
     }
-}
