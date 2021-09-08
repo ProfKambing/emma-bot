@@ -25,7 +25,7 @@ public class Troll extends ListenerAdapter {
         if (u == null)
             return;
         if (TrollToggler.troll) {
-            if (m.getId().equals("823621414203686922") || m.getId().equals("759889917613834250")) { //TODO
+            if (m.getId().equals("823621414203686922") || m.getId().equals("759889917613834250") || m.getId().equals("707050719051645058")) { //TODO
                 u.delete().queue();
             }
             if (m.getId().equals("270904126974590976") && u.getContentRaw().contains("006#2805")) {
