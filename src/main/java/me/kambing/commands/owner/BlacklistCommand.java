@@ -19,29 +19,29 @@ public class BlacklistCommand extends Command {
     protected void execute(CommandEvent event) {
         try {
             User retard = event.getMessage().getMentionedMembers().get(0).getUser();
-            if (urmom(event)[1].equals("add ")) {
+            if (urmom(event)[1].equals("add")) {
                 if (Blacklist.getClass.isRetard(retard)) {
                     event.getMessage().reply("User is already a retard").queue();
                 } else {
                     Blacklist.retards.add(retard.getId());
                     event.getMessage().reply("User " + retard.getAsMention() + " has been blacklisted").queue();
                 }
-            }else if (urmom(event)[1].equals("del ")){
+            }else if (urmom(event)[1].equals("del")){
                 if (Blacklist.getClass.isRetard(retard)) {
                     Blacklist.retards.remove(retard.getId());
-                    event.getMessage().reply("User removed from retards list.");
+                    event.getMessage().reply("User removed from retards list.").queue();
                 }
             }
 
         }catch (Exception e) {
-
+            event.getMessage().reply("" + e).queue();
         }
 
     }
 
     private String[] urmom(CommandEvent event) {
         String[] split = event.getMessage().getContentRaw().split(" ");
-        if (split[0].equals(";b")) {
+        if (event.getMessage().getContentRaw().startsWith(";b")) {
             return event.getMessage().getContentRaw().split(";b ");
         }
     return event.getMessage().getContentRaw().split(";blacklist ");}
