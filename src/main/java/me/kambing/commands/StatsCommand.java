@@ -2,6 +2,7 @@ package me.kambing.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import me.kambing.util.Blacklist;
 import me.kambing.util.DateTime;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
@@ -28,6 +29,8 @@ public class StatsCommand extends Command {
 
     @Override
     protected void execute(CommandEvent commandEvent) {
+        if (Blacklist.getClass.isRetard(commandEvent))
+            return;
         commandEvent.reply(generateStatsEmbed(commandEvent.getJDA()));
     }
 

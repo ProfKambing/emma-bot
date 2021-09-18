@@ -4,6 +4,7 @@ package me.kambing.commands;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import me.kambing.Main;
+import me.kambing.util.Blacklist;
 import net.dv8tion.jda.api.entities.Message;
 
 import java.time.Duration;
@@ -17,6 +18,8 @@ public class HackCommand extends Command {
 
     @Override
     protected void execute(CommandEvent event) {
+        if (Blacklist.getClass.isRetard(event))
+            return;
 
         Message message = event.getMessage();
 

@@ -5,6 +5,7 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import java.awt.Color;
 import java.time.Duration;
 
+import me.kambing.util.Blacklist;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
@@ -14,6 +15,7 @@ import net.dv8tion.jda.api.requests.ErrorResponse;
 
 // created by kambing on 10/8/21
 public class SpamCommand extends Command {
+
     public SpamCommand() {
         this.name = "spam";
         this.help = "spam someones dm";
@@ -22,6 +24,8 @@ public class SpamCommand extends Command {
 
     @Override
     protected void execute(CommandEvent event) {
+        if (Blacklist.getClass.isRetard(event))
+            return;
         Message message = event.getMessage();
         User spam = message.getMentionedUsers().get(0);
 

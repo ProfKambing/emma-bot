@@ -6,6 +6,8 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import java.awt.*;
 import java.util.List;
 import java.time.format.DateTimeFormatter;
+
+import me.kambing.util.Blacklist;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.MessageBuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -35,6 +37,8 @@ public class ServerInfoCommand extends Command
     @Override
     protected void execute(CommandEvent event)
     {
+        if (Blacklist.getClass.isRetard(event))
+            return;
         Guild guild = event.getGuild();
         Member owner = guild.getOwner();
         long onlineCount = guild.getMembers().stream().filter(u -> u.getOnlineStatus() != OnlineStatus.OFFLINE).count();

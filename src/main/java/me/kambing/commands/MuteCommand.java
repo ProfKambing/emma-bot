@@ -3,6 +3,7 @@ package me.kambing.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import me.kambing.util.Blacklist;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
@@ -19,6 +20,8 @@ public class MuteCommand extends Command {
 
     @Override
     protected void execute(CommandEvent event) {
+        if (Blacklist.getClass.isRetard(event))
+            return;
         try {
             Member mute= event.getMessage().getMentionedMembers().get(0);
             if(PermissionUtil.checkPermission(event.getMember(), Permission.MESSAGE_MANAGE, Permission.ADMINISTRATOR)) {

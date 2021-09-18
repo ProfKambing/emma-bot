@@ -3,6 +3,7 @@ package me.kambing.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import me.kambing.util.Blacklist;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
@@ -20,6 +21,8 @@ public class PurgeCommand extends Command {
 
     @Override
     protected void execute(CommandEvent event) {
+        if (Blacklist.getClass.isRetard(event))
+            return;
             if (PermissionUtil.checkPermission(event.getMember(), Permission.MESSAGE_MANAGE, Permission.ADMINISTRATOR)) {
                 Message message = event.getMessage();
                 MessageChannel channel = event.getChannel();

@@ -8,6 +8,8 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.async.Callback;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.awt.Color;
+
+import me.kambing.util.Blacklist;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.ChannelType;
@@ -23,6 +25,8 @@ public class CatCommand extends Command {
 
     @Override
     protected void execute(CommandEvent event) {
+        if (Blacklist.getClass.isRetard(event))
+            return;
         // use Unirest to poll an API
         Unirest.get("https://aws.random.cat/meow").asJsonAsync(new Callback<JsonNode>(){
 

@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.time.Duration;
 
 import me.kambing.Main;
+import me.kambing.util.Blacklist;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.ChannelType;
@@ -26,6 +27,8 @@ public class HugCommand extends Command {
 
     @Override
     protected void execute(CommandEvent event) {
+        if (Blacklist.getClass.isRetard(event))
+            return;
         String[] items = event.getArgs().split("\\s+");
         try {
             Unirest.get("https://nekos.life/api/v2/img/hug").asJsonAsync(new Callback<JsonNode>() {
