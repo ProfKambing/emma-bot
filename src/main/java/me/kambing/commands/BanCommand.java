@@ -3,6 +3,7 @@ package me.kambing.commands;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import me.kambing.Main;
+import me.kambing.util.Blacklist;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
@@ -24,6 +25,8 @@ public class BanCommand extends Command {
 
     @Override
     protected void execute(CommandEvent event) {
+        if (Blacklist.getClass.isRetard(event))
+            return;
         if(PermissionUtil.checkPermission(event.getMember(), Permission.BAN_MEMBERS, Permission.ADMINISTRATOR) || event.getMessage().getAuthor().equals("721382139060551802")) {
 
             EmbedBuilder eb = new EmbedBuilder();

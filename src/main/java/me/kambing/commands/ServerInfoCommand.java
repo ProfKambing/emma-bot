@@ -19,9 +19,9 @@ import net.dv8tion.jda.api.entities.Member;
  */
 public class ServerInfoCommand extends Command
 {
-    private final static String LINESTART = "\u25AB"; // ▫
-    private final static String GUILD_EMOJI = "\uD83D\uDDA5"; // 🖥
-    private final static String NO_REGION = "\u2754"; // ❔
+    private final static String LINESTART = "\u25AB"; //
+    private final static String GUILD_EMOJI = "\uD83D\uDDA5"; //
+    private final static String NO_REGION = "\u2754"; //
 
     public ServerInfoCommand()
     {
@@ -48,10 +48,10 @@ public class ServerInfoCommand extends Command
         switch(guild.getVerificationLevel())
         {
             case VERY_HIGH:
-                verif = "┻━┻ミヽ(ಠ益ಠ)ノ彡┻━┻";
+                verif = "MAX";
                 break;
             case HIGH:
-                verif = "(╯°□°）╯︵ ┻━┻";
+                verif = "HIGH";
                 break;
             default:
                 verif = guild.getVerificationLevel().name();

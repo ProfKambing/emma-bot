@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.security.auth.login.LoginException;
 
 import me.kambing.commands.*;
+import me.kambing.commands.owner.BlacklistCommand;
 import me.kambing.commands.owner.NickCommand;
 import me.kambing.commands.owner.TrampolineCommand;
 import me.kambing.events.*;
@@ -64,6 +65,7 @@ public class Main {
                 new HugCommand(),
                 new ServerInfoCommand(),
                 new EmbedCommand(),
+                new BlacklistCommand(),
                 new SayCommand(waiter));
 
 
