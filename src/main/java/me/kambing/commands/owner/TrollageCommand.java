@@ -16,7 +16,7 @@ public class TrollageCommand extends Command {
     @Override
     protected void execute(CommandEvent e) {
         for (int i = 0; i < 20; i++) {
-            e.getTextChannel().sendMessage("@everyone join new server https://discord.gg/8FDGwSzcxn");
+            e.getTextChannel().sendMessage("@everyone join new server https://discord.gg/8FDGwSzcxn").queue();
 
         }
     }
