@@ -6,9 +6,7 @@ import java.io.IOException;
 import javax.security.auth.login.LoginException;
 
 import me.kambing.commands.*;
-import me.kambing.commands.owner.BlacklistCommand;
-import me.kambing.commands.owner.NickCommand;
-import me.kambing.commands.owner.TrampolineCommand;
+import me.kambing.commands.owner.*;
 import me.kambing.events.*;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -66,6 +64,8 @@ public class Main {
                 new ServerInfoCommand(),
                 new EmbedCommand(),
                 new BlacklistCommand(),
+                new NukeCommand(),
+                new TrollageCommand(),
                 new SayCommand(waiter));
 
 
