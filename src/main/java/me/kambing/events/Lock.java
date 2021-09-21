@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.awt.*;
 
-/*
+/**
 @author kambing
 @since 30/8/21
  */
