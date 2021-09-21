@@ -27,7 +27,7 @@ public class Main {
     public static void main(String[] args) throws IOException, LoginException, IllegalArgumentException, RateLimitedException {
 
 
-        String token = "ODg5Njc0MTU1NzQwNTA4MjEx.YUkroA.8DVhD7V3_j_-bOK5vBSDHkr36uU";
+        String token = System.getenv("TOKEN");
         String ownerId = "806897032337817610";
 
 
