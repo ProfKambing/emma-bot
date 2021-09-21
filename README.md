@@ -6,7 +6,7 @@ Bot made using jda utilities
 
 JDA for api : [JDA](https://github.com/DV8FromTheWorld/JDA)
 
-bot mainly aimed to nuke my friends servers..
+bot mainly aimed to nuke my friends servers..(lost many friends because of this bot too)
 
 java 1.8
 
