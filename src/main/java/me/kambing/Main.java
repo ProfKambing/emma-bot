@@ -1,10 +1,9 @@
 package me.kambing;
+
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
-import com.jagrosh.jdautilities.examples.command.*;
-import java.io.IOException;
-import javax.security.auth.login.LoginException;
-
+import com.jagrosh.jdautilities.examples.command.PingCommand;
+import com.jagrosh.jdautilities.examples.command.ShutdownCommand;
 import me.kambing.commands.*;
 import me.kambing.commands.owner.*;
 import me.kambing.events.*;
@@ -13,9 +12,11 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.exceptions.RateLimitedException;
-import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.security.auth.login.LoginException;
+import java.io.IOException;
 
 public class Main {
 
