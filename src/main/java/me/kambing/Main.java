@@ -70,7 +70,6 @@ public class Main {
 
 
         JDABuilder.createDefault(token)
-                .enableIntents(GatewayIntent.GUILD_MEMBERS)
                 .setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .setActivity(Activity.playing("playing with kambing"))
                 .addEventListeners( new Lock(), new Lock.Locked(), new Raden(), new Troll(), new TrollToggler(), new FilterEvent(), new FilterToggler(), waiter, client.build())
