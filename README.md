@@ -6,6 +6,8 @@ Bot made using jda utilities
 
 JDA for api : [JDA](https://github.com/DV8FromTheWorld/JDA)
 
-require java 11
+bot mainly aimed to nuke my friends servers..(lost many friends because of this bot too)
+
+java 1.8
 
 made on 9/8/2021 - learning java 
